@@ -310,7 +310,7 @@ int main(void)
             bufFlag,
             srcFile,
             "-o", binFile,
-            `-I${PROJECT_DIR}`,
+            `-I${PROJECT_DIR}/src`,
             `${PROJECT_DIR}/libft.a`,
         ].filter(Boolean).join(" ");
         try {

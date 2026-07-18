@@ -13,7 +13,7 @@ export function compileAndRun(sourceCode, projectDir, extraFlags = [], timeout =
             ...extraFlags,
             srcFile,
             "-o", binFile,
-            `-I${projectDir}`,
+            `-I${projectDir}/src`,
             `${projectDir}/libft.a`,
         ].join(" ");
         try {

@@ -96,7 +96,8 @@ const DESCRIPTIONS: Record<string, string> = {
 
 export function parseProject(projectDir: string): FunctionInfo[] {
   const functions: FunctionInfo[] = [];
-  const headerContent = readFileSync(join(projectDir, "libft.h"), "utf-8");
+  const srcDir = join(projectDir, "src");
+  const headerContent = readFileSync(join(srcDir, "libft.h"), "utf-8");
 
   const prototypes: Map<string, string> = new Map();
   const joinedHeader = headerContent.replace(/,\s*\n\s*/g, ", ");
@@ -112,10 +113,10 @@ export function parseProject(projectDir: string): FunctionInfo[] {
     }
   }
 
-  const cFiles = readdirSync(projectDir).filter(f => f.endsWith(".c"));
+  const cFiles = readdirSync(srcDir).filter(f => f.endsWith(".c"));
 
   for (const file of cFiles) {
-    const content = readFileSync(join(projectDir, file), "utf-8");
+    const content = readFileSync(join(srcDir, file), "utf-8");
     const lines = content.split("\n");
 
     const staticFuncs = [...content.matchAll(/^static\s+\w+\s+\**\s*(\w+)\s*\(/gm)].map(m => m[1]);

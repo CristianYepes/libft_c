@@ -81,7 +81,8 @@ const DESCRIPTIONS = {
 };
 export function parseProject(projectDir) {
     const functions = [];
-    const headerContent = readFileSync(join(projectDir, "libft.h"), "utf-8");
+    const srcDir = join(projectDir, "src");
+    const headerContent = readFileSync(join(srcDir, "libft.h"), "utf-8");
     const prototypes = new Map();
     const joinedHeader = headerContent.replace(/,\s*\n\s*/g, ", ");
     const protoLines = joinedHeader.split("\n");
@@ -95,9 +96,9 @@ export function parseProject(projectDir) {
             prototypes.set(funcName, fullProto);
         }
     }
-    const cFiles = readdirSync(projectDir).filter(f => f.endsWith(".c"));
+    const cFiles = readdirSync(srcDir).filter(f => f.endsWith(".c"));
     for (const file of cFiles) {
-        const content = readFileSync(join(projectDir, file), "utf-8");
+        const content = readFileSync(join(srcDir, file), "utf-8");
         const lines = content.split("\n");
         const staticFuncs = [...content.matchAll(/^static\s+\w+\s+\**\s*(\w+)\s*\(/gm)].map(m => m[1]);
         const funcBodies = extractFunctionBodies(lines);

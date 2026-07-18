@@ -68,10 +68,10 @@ bonus:
 	@echo "\033[0;33mAdding bonus files...\033[0m"
 	@make SRCS="$(SRCS) $(BONUS_SRCS)" OBJS="$(OBJS) $(BONUSOBJS)" all
 
-$(OBJ_DIR)%.o: %.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 	@echo "\033[0;33mCompiling $< ...\033[0m"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(SRC_DIR) -c $< -o $@
 
 clean:
 	@echo "\033[1;31mRemoving object files...\033[0m"

@@ -28,7 +28,7 @@ export function compileAndRun(
       ...extraFlags,
       srcFile,
       "-o", binFile,
-      `-I${projectDir}`,
+      `-I${projectDir}/src`,
       `${projectDir}/libft.a`,
     ].join(" ");
 

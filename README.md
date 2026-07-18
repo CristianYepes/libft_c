@@ -33,7 +33,7 @@ A correct replacement library must guarantee: null-termination on every string o
 | Linked List | 9 | `lstnew` `lstadd_front/back` `lstsize` `lstlast` `lstdelone` `lstclear` `lstiter` `lstmap` | Generic singly-linked list (`void *`) |
 | GNL | 10 | `get_next_line` `ft_read_line` `ft_parse_line` `join_strs` `ft_free_strs` | Buffered line reader (configurable `BUFFER_SIZE`) |
 
-**46 source files | ~1700 lines of C | 1 header | 0 external dependencies**
+**46 source files in `src/` | ~1700 lines of C | 1 header | 0 external dependencies**
 
 ---
 
@@ -61,7 +61,7 @@ make re       # Full rebuild
 ### Link Into Your Project
 
 ```sh
-gcc -Wall -Wextra -Werror your_program.c -I/path/to/libft -L/path/to/libft -lft -o program
+gcc -Wall -Wextra -Werror your_program.c -I/path/to/libft/src -L/path/to/libft -lft -o program
 ```
 
 Then use any function by including the header:
@@ -88,8 +88,8 @@ valgrind --leak-check=full --show-leak-kinds=all ./test_program
 gcc -fsanitize=address,undefined -g *.c -o test_sanitized && ./test_sanitized
 
 # GNL edge cases
-gcc -D BUFFER_SIZE=1 -Wall -Wextra -Werror test_gnl.c -L. -lft -o test_bs1 && ./test_bs1
-gcc -D BUFFER_SIZE=10000 -Wall -Wextra -Werror test_gnl.c -L. -lft -o test_bs10k && ./test_bs10k
+gcc -D BUFFER_SIZE=1 -Wall -Wextra -Werror -Isrc test_gnl.c -L. -lft -o test_bs1 && ./test_bs1
+gcc -D BUFFER_SIZE=10000 -Wall -Wextra -Werror -Isrc test_gnl.c -L. -lft -o test_bs10k && ./test_bs10k
 
 # Relink check
 make && make    # Second invocation should produce no compilation output
