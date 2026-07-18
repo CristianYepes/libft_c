@@ -1,7 +1,7 @@
 NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 
 SRC_DIR = src/
 OBJ_DIR = obj/
@@ -40,6 +40,9 @@ SRCS =	ft_bzero.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_split.c \
+		ft_free_split.c \
+		get_next_line.c \
+		get_next_line_utils.c \
 
 BONUS_SRCS = ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \

@@ -1,0 +1,5 @@
+*.o
+*.a
+obj/
+.DS_Store
+.claude/settings.local.json
