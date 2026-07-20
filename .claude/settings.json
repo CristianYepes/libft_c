@@ -2,7 +2,7 @@
   "mcpServers": {
     "libft-tools": {
       "command": "node",
-      "args": ["/home/cristian/Desktop/libft_c/.mcp/build/index.js"]
+      "args": [".mcp/build/index.js"]
     }
   }
 }

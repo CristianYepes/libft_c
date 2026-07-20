@@ -4,12 +4,14 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 import { execSync } from "child_process";
 import { existsSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from "fs";
-import { join, resolve } from "path";
+import { join, resolve, dirname } from "path";
+import { fileURLToPath } from "url";
 import { tmpdir } from "os";
 import { compileAndRun, ensureLibraryBuilt } from "./helpers/compile.js";
 import { parseProject, FunctionInfo } from "./helpers/parse.js";
 
-const PROJECT_DIR = resolve("/home/cristian/Desktop/libft_c");
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const PROJECT_DIR = resolve(__dirname, "..", "..");
 const server = new McpServer({
   name: "libft-tools",
   version: "2.0.0",
